@@ -6,6 +6,10 @@ jobs:
     steps:
       - checkout
       - run:
+        name: Install basic utils
+        command: |
+          apt-get update && apt-get install build-essential
+      - run:
           name: Compile
           command: |
             gcc example.c
