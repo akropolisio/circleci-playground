@@ -2,15 +2,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ubuntu:xenial
+      - image: circleci/python:2.7-stretch
     steps:
       - checkout
-      - run:
-          name: Print env 1
-          command: printenv
-      - run:
-          name: Print env 2
-          command: env
 
       - run:
           name: Install basic utils
@@ -29,3 +23,13 @@ jobs:
           name: Test 2
           command: |
             ./test2.sh
+
+      - run:
+          name: Install aws cli
+          command: |
+            pip install awscli --upgrade --user
+            export PATH=$HOME/.local/bin:$PATH
+
+      - run:
+          name: Upload to S3
+          command: |
