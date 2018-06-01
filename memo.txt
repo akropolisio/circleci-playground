@@ -1,0 +1,7 @@
+https://circleci.com/docs/2.0/env-vars/
+CIRCLECI=true
+CI=true
+CIRCLE_SHA1 = hash of current commit
+CIRCLE_PROJECT_REPONAME = https://github.com/.../$CIRCLE_PROJECT_REPONAME
+CIRCLE_BRANCH = git branch name
+CIRCLE_JOB=build
