@@ -31,4 +31,4 @@ jobs:
       - run:
           name: Upload to s3
           command: |
-            ./upload.bin.sh
+            ./upload-bin.sh
