@@ -2,12 +2,19 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: circleci/buildpack-deps:16.04-curl-browsers
     steps:
       - checkout
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: Compile
+          command: |
+            gcc example.c
       - run:
-          name: Print the Current Time
-          command: date
+          name: Test 1
+          command: |
+            ./test1.sh
+
+      - run:
+          name: Test 2
+          command: |
+            ./test2.sh
