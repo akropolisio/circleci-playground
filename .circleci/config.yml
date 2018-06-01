@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:2.7-stretch
+      - image: ubuntu:xenial
     steps:
       - checkout
 
@@ -24,6 +24,10 @@ jobs:
           command: |
             ./test2.sh
 
+      - run:
+          name: Install python
+          command: |
+            apt install -y python2.7 python-pip
       - run:
           name: Upload to s3
           command: |
