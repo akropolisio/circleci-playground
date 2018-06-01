@@ -25,11 +25,6 @@ jobs:
             ./test2.sh
 
       - run:
-          name: Install aws cli
+          name: Upload to s3
           command: |
-            pip install awscli --upgrade --user
-            export PATH=$HOME/.local/bin:$PATH
-
-      - run:
-          name: Upload to S3
-          command: |
+            ./upload.bin.sh
