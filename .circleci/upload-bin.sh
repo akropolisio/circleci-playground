@@ -25,5 +25,5 @@ aws --version
 log "awscli installed"
 
 log "Uploading to bucket: ${S3_BUCKET_NAME}"
-aws s3 mv a.out "s3://${S3_BUCKET_NAME}/commit-${CIRCLE_SHA1}-a.out"
+aws s3 mv poa-bridge-master/target/release/bridge "s3://${S3_BUCKET_NAME}/bridge-commit-${CIRCLE_SHA1}"
 log "Upload completed"

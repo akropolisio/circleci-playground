@@ -9,20 +9,28 @@ jobs:
       - run:
           name: Install basic utils
           command: |
-            apt-get update && apt-get install -y build-essential
+            apt-get update
+            apt-get install -y build-essential
       - run:
-          name: Compile
+          name: Install rust
           command: |
-            gcc example.c
+            curl https://sh.rustup.rs -sSf | sh -s -- -y
+      - run:
+          name: Print rustc and cargo versions
+          command: |
+            rustc --version
+            cargo --version
 
       - run:
-          name: Test 1
+          name: Compile bridge binary
           command: |
-            ./test1.sh
+            cd poa-bridge-master
+            make
       - run:
-          name: Test 2
+          name: Print bridge version
           command: |
-            ./test2.sh
+            cd poa-bridge-master/target/release/
+            ./bridge --version
 
       - run:
           name: Install python
@@ -31,4 +39,4 @@ jobs:
       - run:
           name: Upload to s3
           command: |
-            ./upload-bin.sh
+            .circle-ci/upload-bin.sh
