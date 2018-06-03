@@ -13,6 +13,7 @@ jobs:
             apt-get install -y build-essential
       - run:
           name: Install curl
+          command: |
             apt-get install -y curl
       - run:
           name: Install rust
