@@ -4,7 +4,7 @@ set -x
 
 function log() {
     ts=$(date '+%Y-%m-%dT%H:%M:%SZ')
-    printf '%s [upload-bin] %s\n' "$ts" "$1"
+    printf '%s [%s] %s\n' "$ts" "$1" "$2"
 }
 
 function error() {

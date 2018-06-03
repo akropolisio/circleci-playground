@@ -5,64 +5,66 @@ jobs:
       - image: ubuntu:xenial
     steps:
       - checkout
+      - run:
+          command: .circleci/build.sh
 
-      - run:
-          name: Install build-essential
-          command: |
-            apt-get update
-            apt-get install -y build-essential
-      - run:
-          name: Install curl
-          command: |
-            apt-get install -y curl
-      - run:
-          name: Install rust
-          command: |
-            curl https://sh.rustup.rs -sSf | sh -s -- -y
-      - run:
-          name: Print rustc and cargo versions
-          command: |
-            source $HOME/.cargo/env
-            rustc --version
-            cargo --version
+      # - run:
+      #     name: Install build-essential
+      #     command: |
+      #       apt-get update
+      #       apt-get install -y build-essential
+      # - run:
+      #     name: Install curl
+      #     command: |
+      #       apt-get install -y curl
+      # - run:
+      #     name: Install rust
+      #     command: |
+      #       curl https://sh.rustup.rs -sSf | sh -s -- -y
+      # - run:
+      #     name: Print rustc and cargo versions
+      #     command: |
+      #       source $HOME/.cargo/env
+      #       rustc --version
+      #       cargo --version
 
-      - run:
-          name: Install solc
-          command: |
-            apt-get install -y software-properties-common
-            add-apt-repository -y ppa:ethereum/ethereum
-            apt-get update
-            apt-get install -y solc
-      - run:
-          name: Install libudev-dev
-          command: |
-            apt-get install -y libudev-dev
-      - run:
-          name: Install libssl-dev
-          command: |
-            apt-get install -y libssl-dev
-      - run:
-          name: Install pkg-config
-          command: |
-            apt-get install -y pkg-config
-      - run:
-          name: Compile bridge binary
-          command: |
-            source $HOME/.cargo/env
-            cd poa-bridge-master
-            export RUST_BACKTRACE=1
-            make
-      - run:
-          name: Print bridge version
-          command: |
-            cd poa-bridge-master/target/release/
-            ./bridge --version
+      # - run:
+      #     name: Install solc
+      #     command: |
+      #       apt-get install -y software-properties-common
+      #       add-apt-repository -y ppa:ethereum/ethereum
+      #       apt-get update
+      #       apt-get install -y solc
+      # - run:
+      #     name: Install libudev-dev
+      #     command: |
+      #       apt-get install -y libudev-dev
+      # - run:
+      #     name: Install libssl-dev
+      #     command: |
+      #       apt-get install -y libssl-dev
+      # - run:
+      #     name: Install pkg-config
+      #     command: |
+      #       apt-get install -y pkg-config
+      # - run:
+      #     name: Compile bridge binary
+      #     command: |
+      #       source $HOME/.cargo/env
+      #       cd poa-bridge-master
+      #       export RUST_BACKTRACE=1
+      #       make
+      # - run:
+      #     name: Print bridge version
+      #     command: |
+      #       cd poa-bridge-master/target/release/
+      #       ./bridge --version
 
-      - run:
-          name: Install python
-          command: |
-            apt install -y python2.7 python-pip
-      - run:
-          name: Upload to s3
-          command: |
-            .circle-ci/upload-bin.sh
+      # - run:
+      #     name: Install python
+      #     command: |
+      #       apt install -y python2.7 python-pip
+      # - run:
+      #     name: Upload to s3
+      #     command: |
+      #       .circle-ci/upload-bin.sh
