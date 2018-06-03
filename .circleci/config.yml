@@ -42,6 +42,10 @@ jobs:
           command: |
             apt-get install -y libssl-dev
       - run:
+          name: Install pkg-config
+          command: |
+            apt-get install -y pkg-config
+      - run:
           name: Compile bridge binary
           command: |
             source $HOME/.cargo/env
