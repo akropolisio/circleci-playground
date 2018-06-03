@@ -30,6 +30,10 @@ jobs:
             add-apt-repository -y ppa:ethereum/ethereum
             apt-get update
             apt-get install -y solc
+      - run:
+          name: Install libudev-dev
+          command: |
+            apt-get install -y libudev-dev
 
       - run:
           name: Compile bridge binary
