@@ -26,7 +26,7 @@ jobs:
       - run:
           name: Install solc
           command: |
-            add-apt-repository ppa:ethereum/ethereum
+            apt-add-repository ppa:ethereum/ethereum
             apt-get update
             apt-get install solc
 
