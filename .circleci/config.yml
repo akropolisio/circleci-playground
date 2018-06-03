@@ -16,6 +16,8 @@ jobs:
           name: Install rust
           command: |
             curl https://sh.rustup.rs -sSf | sh -s -- -y
+            echo $PATH
+            ls -alh $HOME/.cargo
             source $HOME/.cargo/env
       - run:
           name: Print rustc and cargo versions
