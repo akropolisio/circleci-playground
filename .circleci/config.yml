@@ -19,9 +19,12 @@ jobs:
             echo $PATH
             ls -alh $HOME/.cargo
             source $HOME/.cargo/env
+            echo $PATH
+            rustc --version
       - run:
           name: Print rustc and cargo versions
           command: |
+            echo $PATH
             rustc --version
             cargo --version
 
