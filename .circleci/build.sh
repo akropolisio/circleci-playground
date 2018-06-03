@@ -61,6 +61,14 @@ log "bridge" "Install libssl-dev"
 apt-get install -y libssl-dev
 log "bridge" "Install pkg-config"
 apt-get install -y pkg-config
+# for rocksdb
+log "bridge" "Install packages for rocksdb"
+apt-get install libgflags-dev
+apt-get install libsnappy-dev
+apt-get install zlib1g-dev
+apt-get install libbz2-dev
+apt-get install liblz4-dev
+apt-get install libzstd-dev
 
 log "bridge" "Compile binary"
 cd poa-bridge-master
