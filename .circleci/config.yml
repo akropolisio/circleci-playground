@@ -50,6 +50,7 @@ jobs:
           command: |
             source $HOME/.cargo/env
             cd poa-bridge-master
+            export RUST_BACKTRACE=1
             make
       - run:
           name: Print bridge version
