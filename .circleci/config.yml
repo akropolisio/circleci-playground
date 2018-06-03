@@ -16,21 +16,17 @@ jobs:
           name: Install rust
           command: |
             curl https://sh.rustup.rs -sSf | sh -s -- -y
-            echo $PATH
-            ls -alh $HOME/.cargo
-            source $HOME/.cargo/env
-            echo $PATH
-            rustc --version
       - run:
           name: Print rustc and cargo versions
           command: |
-            echo $PATH
+            source $HOME/.cargo/env
             rustc --version
             cargo --version
 
       - run:
           name: Compile bridge binary
           command: |
+            source $HOME/.cargo/env
             cd poa-bridge-master
             make
       - run:
