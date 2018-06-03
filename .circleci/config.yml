@@ -26,10 +26,10 @@ jobs:
       - run:
           name: Install solc
           command: |
-            apt-get install software-properties-common
+            apt-get install -y software-properties-common
             apt-add-repository ppa:ethereum/ethereum
             apt-get update
-            apt-get install solc
+            apt-get install -y solc
 
       - run:
           name: Compile bridge binary
