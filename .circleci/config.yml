@@ -24,6 +24,13 @@ jobs:
             cargo --version
 
       - run:
+          name: Install solc
+          command: |
+            add-apt-repository ppa:ethereum/ethereum
+            apt-get update
+            apt-get install solc
+
+      - run:
           name: Compile bridge binary
           command: |
             source $HOME/.cargo/env
