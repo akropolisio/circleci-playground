@@ -72,7 +72,8 @@ apt-get install -y libzstd-dev
 
 log "bridge" "Compile binary"
 cd poa-bridge-master
-RUST_BACKTRACE=1 make
+#RUST_BACKTRACE=1 make
+make
 log "bridge" "Print bridge version"
 target/release/bridge --version
 cd ..
