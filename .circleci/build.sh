@@ -3,7 +3,7 @@ set -e
 
 function log() {
     ts=$(date '+%Y-%m-%dT%H:%M:%SZ')
-    printf '%s [%s] %s\n' "$ts" "$1" "$2"
+    printf '%s ************** [%s] %s\n' "$ts" "$1" "$2"
 }
 
 function error() {
@@ -36,6 +36,8 @@ log "general" "Run apt-update"
 apt-get update
 log "general" "Install build-essential"
 apt-get install -y build-essential
+log "general" "Print gcc version"
+gcc --version
 log "general" "Install curl"
 apt-get install -y curl
 
@@ -47,6 +49,22 @@ source $HOME/.cargo/env
 log "rust" "Print rustc and cargo versions"
 rustc --version
 cargo --version
+
+
+####### ROCKSDB #######
+log "rocksdb" "Install packages for rocksdb"
+apt-get install -y libgflags-dev
+apt-get install -y libsnappy-dev
+apt-get install -y zlib1g-dev
+apt-get install -y libbz2-dev
+apt-get install -y liblz4-dev
+apt-get install -y libzstd-dev
+
+log "rocksdb" "Build from source"
+git clone https://github.com/facebook/rocksdb.git
+cd rocksdb/
+make all
+cd ..
 
 
 ####### BRIDGE #######
@@ -61,15 +79,6 @@ log "bridge" "Install libssl-dev"
 apt-get install -y libssl-dev
 log "bridge" "Install pkg-config"
 apt-get install -y pkg-config
-# for rocksdb
-log "bridge" "Install packages for rocksdb"
-apt-get install -y libgflags-dev
-apt-get install -y libsnappy-dev
-apt-get install -y zlib1g-dev
-apt-get install -y libbz2-dev
-apt-get install -y liblz4-dev
-apt-get install -y libzstd-dev
-
 log "bridge" "Compile binary"
 cd poa-bridge-master
 #RUST_BACKTRACE=1 make
