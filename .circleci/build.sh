@@ -40,7 +40,7 @@ gcc --version
 log "general" "Install curl"
 apt-get install -y curl
 log "general" "Install git"
-apt-get install git-core
+apt-get install -y git-core
 log "general" "Print git version"
 git --version
 
