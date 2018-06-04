@@ -63,11 +63,11 @@ apt-get install -y libbz2-dev
 apt-get install -y liblz4-dev
 apt-get install -y libzstd-dev
 
-log "rocksdb" "Build from source"
-git clone https://github.com/facebook/rocksdb.git
-cd rocksdb/
-make all
-cd ..
+# log "rocksdb" "Build from source"
+# git clone https://github.com/facebook/rocksdb.git
+# cd rocksdb/
+# make all
+# cd ..
 
 
 ####### BRIDGE #######
@@ -84,7 +84,7 @@ log "bridge" "Install pkg-config"
 apt-get install -y pkg-config
 log "bridge" "Compile binary"
 cd poa-bridge-master
-#RUST_BACKTRACE=1 make
+export RUST_BACKTRACE=1
 make
 log "bridge" "Print bridge version"
 target/release/bridge --version
