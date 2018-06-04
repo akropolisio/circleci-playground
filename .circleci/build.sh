@@ -14,17 +14,16 @@ function error() {
 
 log "." "SCRIPT STARTED"
 
+
 ####### CHECK REQUIRED ENV VARS #######
 log "check" "Check aws env vars"
 if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ] || [ -z "$AWS_DEFAULT_REGION" ]; then
     error "Missing AWS_ACCESS_KEY_ID or AWS_SECRET_ACCESS_KEY or AWS_DEFAULT_REGION"
 fi
-
 log "check" "Check S3 bucket env var"
 if [ -z "$S3_BUCKET_NAME" ]; then
     error "Missing S3_BUCKET_NAME"
 fi
-
 log "check" "Check CirclCI env vars"
 if [ -z "$CIRCLE_BRANCH" ] || [ -z "$CIRCLE_SHA1" ]; then
     error "Missing CIRCLE_BRANCH or CIRCLE_SHA1"
@@ -40,6 +39,10 @@ log "general" "Print gcc version"
 gcc --version
 log "general" "Install curl"
 apt-get install -y curl
+log "general" "Install git"
+apt-get install git-core
+log "general" "Print git version"
+git --version
 
 
 ####### RUST #######
