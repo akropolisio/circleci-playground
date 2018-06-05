@@ -44,6 +44,8 @@ apt-get install -y git-core
 log "general" "Print git version"
 git --version
 
+####### ADDITIONAL PACKAGES #######
+apt-get install -y curl file gcc g++ git make openssh-client autoconf automake cmake libtool libcurl4-openssl-dev libssl-dev libelf-dev libdw-dev binutils-dev zlib1g-dev libiberty-dev wget xz-utils pkg-config python
 
 ####### RUST #######
 log "rust" "Install rust"
