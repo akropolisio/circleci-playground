@@ -7,6 +7,7 @@ jobs:
       - checkout
       - run:
           command: .circleci/build.sh
+          no_output_timeout: 20m
 
       # - run:
       #     name: Install build-essential
